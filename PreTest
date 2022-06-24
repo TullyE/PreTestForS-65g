@@ -1,0 +1,67 @@
+void setup() {
+  println(isLeapLong(1960));
+  println(isLeapLong(1900));
+  println(isLeapLong(2000));
+
+  println(isLeap(1960));
+  println(isLeap(1900));
+  println(isLeap(2000));
+
+  println(julianDate(1900, 1, 1));
+  println(julianDate(1960, 9, 28));
+  println(julianDate(1900, 1, 1));
+  println(julianDate(1900, 12, 31));
+  println(julianDate(1901, 1, 1));
+  println(julianDate(1900, 1, 1));
+  println(julianDate(2001, 1, 1));
+  println(julianDate(2000, 1, 1));
+  
+  allCoordinates(3, 3);
+}
+void draw() {
+}
+
+public boolean isLeap(int year)
+{
+  return year % 4 != 0 ? false
+    : year % 100 != 0 ? true
+    : year % 400 != 0 ? false
+    : true;
+}
+
+public int julianDate(int year, int month, int day)
+{
+  day += month == 1 ? 0 : month == 2 ? 31: month == 3 ? 59 : month == 4 ? 90 : month == 5 ? 120 : month == 6 ? 151 : month == 7 ? 181 : month == 8 ? 212 : month == 9 ? 243 : month == 10 ? 273 : month == 11 ? 304 : month == 12 ? 334 : 0;
+  day += ((year - 1900) * 365) + ((year - 1900) / 4);
+  return day;
+  //totalDays += month > 2 ? isLeap(year) ? 1 : 0 : 0;
+}
+
+
+public boolean isLeapLong(int year)
+{
+  if (year % 4 == 0)//===
+    {//===
+    if (year % 100 == 0)
+    {
+      if (year % 400 == 0)
+      {
+        return true;
+      }
+      return false;
+    }
+  return true;
+}//===
+return false;//===
+}
+
+public int[][] allCoordinates(int maxRows, int maxCols)
+{
+  int[][] allC = new int[maxRows][maxCols];
+  for (int i = 0; i < maxRows; i ++) {
+    for (int j = 0; j < maxCols; j ++) {
+      allC[i] = new int[] {i, j};
+    }
+  }
+  return allC;
+}
